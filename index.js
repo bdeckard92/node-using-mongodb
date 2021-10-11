@@ -1,5 +1,5 @@
 import express from "express";
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const app = express();
 const PORT = 4000;
@@ -11,8 +11,8 @@ app.use(
   })
 );
 app.use(express.json());
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/productsdb", {
+mongoose.promise = global.Promise;
+mongoose.connect("mongodb://localhost/productsdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
